@@ -76,7 +76,7 @@ for subdir, dirs, files in os.walk(srchstr):
     for file in files:
         filepath = subdir + os.sep + file
 
-        if  filepath.endswith(".wav") or filepath.endswith(".mp3") :
+        if  filepath.endswith(".wav") :
 
             tim = os.path.getmtime(filepath)
 
