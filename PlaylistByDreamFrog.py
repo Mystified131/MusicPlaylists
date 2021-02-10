@@ -18,33 +18,22 @@ def permutList(l):
     return res
 
 def remaplist(lst):
-    rnalst = []
-    l4 = max(lst)
-    l1 = int(l4 / 4)
-    l2 = int(l4 / 2)
-    l3 =  l1 + l2
-    rnalst.append(l1)
-    rnalst.append(l2)
-    rnalst.append(l3)
-    rnalst.append(l4)
-    rnatot = (permutList(rnalst))
-    x = len(lst)
-    y = (x // 4) + 1
+    mxval = max(lst)
+    sbval = int(mxval / 4)
     outlst = []
-    for z in range(y):
-        ctr = random.randrange(24)
-        addlst = rnatot[ctr]
-        outlst.append(addlst)
-    finlst = []
-    for elem in outlst:
-        for elem2 in elem:
-            if len(finlst) <= x:
-                finlst.append(elem2)
-    fonlst = []
-    for a in range(x):
-        val = (lst[a] + finlst[a])
-        fonlst.append(val)
-    return fonlst
+    for elem in lst:
+        divedic = random.randrange(10)
+        if divedic < 8:
+            adr = random.randrange(sbval)
+            elem += adr
+            if elem > mxval:
+                elem -= mxval
+            outlst.append(elem)
+        if divedic > 7:
+            val = random.randrange(mxval)
+            outlst.append(val)
+    return outlst
+
 
 #this code retrieves the date and time from the computer, to create the timestamp
 
@@ -79,21 +68,24 @@ for subdir, dirs, files in os.walk(srchstr):
 
             contentdat[filepath] = tim
 
+
 newply = []
 
 newplyd = []
+
 
 for w in sorted(contentdat, key=contentdat.get, reverse=False):
     newply.append(w)
     newplyd.append(contentdat[w])
 
-totlen = len(newply)
+
+leng = len(newply)
 
 newlst = []
 
-startlen = random.randrange(totlen -100)
+startlen = random.randrange(leng -totrk)
 
-for x in range(startlen, startlen + 100, 2):
+for x in range(startlen, (startlen + totrk)):
     newlst.append(x)
 
 fonlst = remaplist(newlst)
@@ -103,9 +95,10 @@ finlst = []
 outlst = []
 
 for y in range(totrk):
+
     valu = fonlst[y]
-    if valu > totlen:
-        valu -= totlen
+    if valu > leng:
+        valu -= random.randrange(leng)
     finlst.append(newply[valu])
     trk =  str(Path(newply[valu]).stem)
     p = (Path(newply[valu]))
@@ -114,16 +107,16 @@ for y in range(totrk):
     outlst.append(sttrk)
     newply.remove(newply[valu])
 
-ounam = "RNAOrderedPlaylist_" + time + ".m3u"
+ounam = "DreamFrogOrderedPlaylist_" + time + ".m3u"
 
 outfile = open(ounam, "w")
 
 for elem in finlst:
      outfile.write(elem + '\n')
 
-outfile.close()
+outfile.close() 
 
-ounm = "RNAOrderedTracklist_" + time + ".txt"
+ounm = "DreamFrogOrderedTracklist_" + time + ".txt"
 
 outfile = open(ounm, "w")
 
@@ -131,6 +124,5 @@ for elem in outlst:
      outfile.write(elem + '\n')
 
 outfile.close() 
-
 
 ## THE GHOST OF THE SHADOW ##

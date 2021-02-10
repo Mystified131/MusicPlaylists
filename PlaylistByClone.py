@@ -17,17 +17,22 @@ def permutList(l):
 
     return res
 
+
 def remaplist(lst):
     rnalst = []
-    l4 = max(lst)
-    l1 = int(l4 / 4)
-    l2 = int(l4 / 2)
-    l3 =  l1 + l2
+    l4 = lst.pop()
+    l3 = lst.pop()
+    l2 = lst.pop()
+    l1 = lst.pop()
     rnalst.append(l1)
+    lst.append(l1)
     rnalst.append(l2)
+    lst.append(l2)
     rnalst.append(l3)
+    lst.append(l3)
     rnalst.append(l4)
-    rnatot = (permutList(rnalst))
+    lst.append(l4)
+    rnatot = permutList(rnalst)
     x = len(lst)
     y = (x // 4) + 1
     outlst = []
@@ -43,6 +48,10 @@ def remaplist(lst):
     fonlst = []
     for a in range(x):
         val = (lst[a] + finlst[a])
+        if val >= (max(lst)-1):
+            val -= max(lst)
+        if val in fonlst:
+            val += 1
         fonlst.append(val)
     return fonlst
 
@@ -87,13 +96,13 @@ for w in sorted(contentdat, key=contentdat.get, reverse=False):
     newply.append(w)
     newplyd.append(contentdat[w])
 
-totlen = len(newply)
+leng = len(newply)
 
 newlst = []
 
-startlen = random.randrange(totlen -100)
+startlen = random.randrange(leng -totrk)
 
-for x in range(startlen, startlen + 100, 2):
+for x in range(startlen, (startlen + totrk)):
     newlst.append(x)
 
 fonlst = remaplist(newlst)
@@ -102,28 +111,29 @@ finlst = []
 
 outlst = []
 
-for y in range(totrk):
+for y in range(totrk
+):
     valu = fonlst[y]
-    if valu > totlen:
-        valu -= totlen
+    if valu > leng:
+        valu -= random.randrange(leng)
     finlst.append(newply[valu])
     trk =  str(Path(newply[valu]).stem)
     p = (Path(newply[valu]))
     trkloc = str(p.parts[-2])
     sttrk = trkloc + ": " + trk
     outlst.append(sttrk)
-    newply.remove(newply[valu])
+    newply.remove(newply[valu]) 
 
-ounam = "RNAOrderedPlaylist_" + time + ".m3u"
+ounam = "CloneOrderedPlaylist_" + time + ".m3u"
 
 outfile = open(ounam, "w")
 
 for elem in finlst:
      outfile.write(elem + '\n')
 
-outfile.close()
+outfile.close() 
 
-ounm = "RNAOrderedTracklist_" + time + ".txt"
+ounm = "CloneOrderedTracklist_" + time + ".txt"
 
 outfile = open(ounm, "w")
 
@@ -131,6 +141,5 @@ for elem in outlst:
      outfile.write(elem + '\n')
 
 outfile.close() 
-
 
 ## THE GHOST OF THE SHADOW ##

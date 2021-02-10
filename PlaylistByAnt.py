@@ -4,6 +4,7 @@ import random
 import os
 from collections import defaultdict
 import datetime
+from pathlib import Path
 
 def permutList(l):
     if not l:
@@ -86,19 +87,35 @@ fonlst = remaplist(newlst)
 
 finlst = [] 
 
+outlst = []
+
 for y in range(totrk
 ):
     valu = fonlst[y]
     if valu > leng:
         valu -= random.randrange(leng)
     finlst.append(newply[valu])
-  
+    trk =  str(Path(newply[valu]).stem)
+    p = (Path(newply[valu]))
+    trkloc = str(p.parts[-2])
+    sttrk = trkloc + ": " + trk
+    outlst.append(sttrk)
+    newply.remove(newply[valu])
 
 ounam = "AntOrderedPlaylist_" + time + ".m3u"
 
 outfile = open(ounam, "w")
 
 for elem in finlst:
+     outfile.write(elem + '\n')
+
+outfile.close() 
+
+ounm = "AntOrderedTracklist_" + time + ".txt"
+
+outfile = open(ounm, "w")
+
+for elem in outlst:
      outfile.write(elem + '\n')
 
 outfile.close() 
