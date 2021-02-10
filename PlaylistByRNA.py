@@ -57,6 +57,7 @@ for i in right_now:
 
 time = ("".join(list))
    
+totrk = 50 #This variable controls length of output playlist
 
 #srchstr = "C:\\Users\\mysti\\Media_Files\\Sounds\\OlderSounds"
 
@@ -99,7 +100,7 @@ fonlst = remaplist(newlst)
 
 finlst = [] 
 
-for y in range(50):
+for y in range(totrk):
     valu = fonlst[y]
     if valu > totlen:
         valu -= totlen

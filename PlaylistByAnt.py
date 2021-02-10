@@ -4,7 +4,6 @@ import random
 import os
 from collections import defaultdict
 import datetime
-#from itertools import permutations
 
 def permutList(l):
     if not l:
@@ -44,6 +43,7 @@ for i in right_now:
 
 time = ("".join(list))
    
+totrk = 50 #This variable controls length of output playlist
 
 #srchstr = "C:\\Users\\mysti\\Media_Files\\Sounds\\OlderSounds"
 
@@ -77,16 +77,17 @@ leng = len(newply)
 
 newlst = []
 
-startlen = random.randrange(leng -50)
+startlen = random.randrange(leng -totrk)
 
-for x in range(startlen, (startlen + 50)):
+for x in range(startlen, (startlen + totrk)):
     newlst.append(x)
 
 fonlst = remaplist(newlst)
 
 finlst = [] 
 
-for y in range(50):
+for y in range(totrk
+):
     valu = fonlst[y]
     if valu > leng:
         valu -= random.randrange(leng)
