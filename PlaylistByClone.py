@@ -5,6 +5,7 @@ import os
 from collections import defaultdict
 import datetime
 from pathlib import Path
+import shutil
 
 def permutList(l):
     if not l:
@@ -65,8 +66,23 @@ for i in right_now:
         list.append(i)
 
 time = ("".join(list))
-   
-totrk = 50 #This variable controls length of output playlist
+
+print("")
+
+totrk = int(input("How many tracks would you like to add to this playlist? The minimum is 5 and the default is 50: "))
+
+if not totrk:
+    totrk = 50 #This variable controls length of output playlist
+
+if totrk <= 4:
+    totrk = 5
+
+print("")
+
+cpy = str(input ("Would you like to copy these files to the static folder? To copy is the default. If so, please press 'Y': "))
+
+if not cpy:
+    cpy = "Y" #This variable controls whether we copy the files to the static folder
 
 #srchstr = "C:\\Users\\mysti\\Media_Files\\Sounds\\OlderSounds"
 
@@ -121,6 +137,10 @@ for y in range(totrk
     p = (Path(newply[valu]))
     trkloc = str(p.parts[-2])
     sttrk = trkloc + ": " + trk
+    if cpy == "Y":
+        outstr = "C:\\Users\\mysti\\Coding\\MusicPlaylists\\static\\" + str(tim) + "_" + trkloc + "-__" + trk + ".wav"
+        shutil.copy(newply[valu], outstr)
+    outlst.append(sttrk)
     outlst.append(sttrk)
     newply.remove(newply[valu]) 
 
@@ -141,5 +161,11 @@ for elem in outlst:
      outfile.write(elem + '\n')
 
 outfile.close() 
+
+print("")
+
+print("The documents are located in the same folder as this code. If tracks were copied, they will be in the static folder.")
+
+print("")
 
 ## THE GHOST OF THE SHADOW ##
