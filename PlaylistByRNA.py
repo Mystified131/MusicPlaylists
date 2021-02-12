@@ -133,7 +133,7 @@ for y in range(totrk):
         outstr = "C:\\Users\\mysti\\Coding\\MusicPlaylists\\static\\" + str(tim) + "_" + str(y) + "_" + trkloc + "-__" + trk + ".wav"
         shutil.copy(newply[valu], outstr)
         print("")
-        print("Copying: " + str(y))
+        print("Copying: " + str(y+1))
     outlst.append(sttrk)
     newply.remove(newply[valu])
 
