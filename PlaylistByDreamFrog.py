@@ -121,8 +121,10 @@ for y in range(totrk):
     trkloc = str(p.parts[-2])
     sttrk = trkloc + ": " + trk
     if cpy == "Y":
-        outstr = "C:\\Users\\mysti\\Coding\\MusicPlaylists\\static\\" + str(tim) + "_" + trkloc + "-__" + trk + ".wav"
+        outstr = "C:\\Users\\mysti\\Coding\\MusicPlaylists\\static\\" + str(tim) + "_" + str(y) + "_" + trkloc + "-__" + trk + ".wav"
         shutil.copy(newply[valu], outstr)
+        print("")
+        print("Copying: " + str(y+1))
     outlst.append(sttrk)
     newply.remove(newply[valu])
 
