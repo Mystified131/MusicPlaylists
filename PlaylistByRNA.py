@@ -137,6 +137,19 @@ for y in range(totrk):
     outlst.append(sttrk)
     newply.remove(newply[valu])
 
+srchstr2 = "C:\\Users\\mysti\\Coding\\MusicPlaylists\\static\\"
+
+contentloc = []
+
+for subdir, dirs, files in os.walk(srchstr2):
+    for file in files:
+        filepath = subdir + os.sep + file
+
+        if  filepath.endswith(".wav") :
+
+            cstr = str(filepath)
+            contentloc.append(cstr)
+
 ounam = "RNAOrderedPlaylist_" + time + ".m3u"
 
 outfile = open(ounam, "w")
@@ -151,6 +164,15 @@ ounm = "RNAOrderedTracklist_" + time + ".txt"
 outfile = open(ounm, "w")
 
 for elem in outlst:
+     outfile.write(elem + '\n')
+
+outfile.close() 
+
+ounm2 = "RNAOrderedLocalPlaylist_" + time + ".m3u"
+
+outfile = open(ounm2, "w")
+
+for elem in contentloc:
      outfile.write(elem + '\n')
 
 outfile.close() 
