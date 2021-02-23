@@ -70,6 +70,10 @@ srchstr = 'E:\\OriginalAudio\\Songs'
 
 #srchstr = "C:\\Users\\mysti\\Media_Files\\Sounds\\OlderSounds"
 
+print("")
+
+print("Please wait while the processor applies organic logic to your track collection.")
+
 contentdat = {}
 
 for subdir, dirs, files in os.walk(srchstr):
@@ -114,7 +118,7 @@ for y in range(totrk
     trk =  str(Path(newply[valu]).stem)
     p = (Path(newply[valu]))
     trkloc = str(p.parts[-2])
-    sttrk = trkloc + ": " + trk
+    sttrk = str(y + 1) + " " + trkloc + ": " + trk
     if cpy == "Y":
         outstr = "C:\\Users\\mysti\\Coding\\MusicPlaylists\\static\\" + str(tim) + "_" + str(y) + "_" + trkloc + "-__" + trk + ".wav"
         shutil.copy(newply[valu], outstr)
