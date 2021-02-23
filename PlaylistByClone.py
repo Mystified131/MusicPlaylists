@@ -147,7 +147,6 @@ for y in range(totrk
         print("")
         print("Copying: " + str(y+1))
     outlst.append(sttrk)
-    outlst.append(sttrk)
     newply.remove(newply[valu]) 
 
 srchstr2 = "C:\\Users\\mysti\\Coding\\MusicPlaylists\\static\\"
