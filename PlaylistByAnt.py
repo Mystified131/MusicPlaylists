@@ -109,8 +109,7 @@ finlst = []
 
 outlst = []
 
-for y in range(totrk
-):
+for y in range(totrk):
     valu = fonlst[y]
     if valu > leng:
         valu -= random.randrange(leng)
