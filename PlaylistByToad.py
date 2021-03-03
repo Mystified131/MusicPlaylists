@@ -64,7 +64,7 @@ for w in sorted(contentdat, key=contentdat.get, reverse=False):
 
 hopl = []
 
-for obj in range(24):
+for obj in range(random.randrange(18,36)):
     a = random.randrange(-2, 2)
     b = random.randrange(-2, 2)
     hopl.append((a,b))
