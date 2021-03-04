@@ -88,7 +88,7 @@ for ctr in range(totrk):
     trkloc = str(p.parts[-2])
     sttrk = str(ctr + 1) + " " + trkloc + ": " + trk
     if cpy == "Y":
-        outstr = "C:\\Users\\mysti\\Coding\\MusicPlaylists\\static\\" + str(tim) + "_" + str((ctr + 1)/1000) + "_" + trkloc + "-__" + trk + ".wav"
+        outstr = "C:\\Users\\mysti\\Coding\\MusicPlaylists\\static\\" + str(tim) + "_" + str((ctr + 1)/100) + "_" + trkloc + "-__" + trk + ".wav"
         shutil.copy(astr, outstr)
         print("")
         print("Copying: " + str(ctr+1))
