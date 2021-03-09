@@ -6,6 +6,8 @@ from collections import defaultdict
 import datetime
 from pathlib import Path
 import shutil
+from RandFunct import random_number
+from RandFunct2 import random_number2
 
 def permutList(l):
     if not l:
@@ -33,7 +35,7 @@ def remaplist(lst):
     y = (x // 4) + 1
     outlst = []
     for z in range(y):
-        ctr = random.randrange(24)
+        ctr = random_number(24)
         addlst = rnatot[ctr]
         outlst.append(addlst)
     finlst = []
@@ -112,7 +114,7 @@ totlen = len(newply)
 
 newlst = []
 
-startlen = random.randrange(totlen -100)
+startlen = random_number(totlen -100)
 
 for x in range(startlen, startlen + 100, 2):
     newlst.append(x)

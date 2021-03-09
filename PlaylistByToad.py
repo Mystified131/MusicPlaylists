@@ -4,6 +4,8 @@ from collections import defaultdict
 import datetime
 from pathlib import Path
 import shutil
+from RandFunct import random_number
+from RandFunct2 import random_number2
 
 #this code retrieves the date and time from the computer, to create the timestamp
 
@@ -64,21 +66,21 @@ for w in sorted(contentdat, key=contentdat.get, reverse=False):
 
 hopl = []
 
-for obj in range(random.randrange(18,36)):
-    a = random.randrange(-2, 2)
-    b = random.randrange(-2, 2)
+for obj in range(random_number2(18,36)):
+    a = random_number2(-2, 2)
+    b = random_number2(-2, 2)
     hopl.append((a,b))
 
 moves = 50
 
-fst = random.randrange(len(mapl))
+fst = random_number(len(mapl))
 
 outlst = []
 
 finlst = [] 
 
 for ctr in range(totrk):
-    hopran = random.randrange(len(hopl))
+    hopran = random_number(len(hopl))
     aval = (sum(int(i) for i in hopl[hopran])) * 4
     fst += aval
     astr = mapl[fst]
@@ -96,9 +98,9 @@ for ctr in range(totrk):
     finlst.append(astr)
     mapl.remove(astr)
 
-    bighop = random.randrange(10)
+    bighop = random_number(10)
     if bighop > 7:
-        fst = random.randrange(len(mapl))
+        fst = random_number(len(mapl))
 
 srchstr2 = "C:\\Users\\mysti\\Coding\\MusicPlaylists\\static\\"
 
